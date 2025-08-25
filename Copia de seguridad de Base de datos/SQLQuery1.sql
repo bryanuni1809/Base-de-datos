@@ -108,3 +108,41 @@ SELECT * FROM NivelesIdioma;
 SELECT * FROM Estudiantes;
 SELECT * FROM Matriculas;
 
+SELECT e.nombre AS Estudiante, 
+       c.nombre AS Curso, 
+       p.nombre AS Profesor, 
+       n.nombre AS Nivel, 
+       m.fecha AS FechaMatricula
+FROM Matriculas m
+INNER JOIN Estudiantes e ON m.idestudiante=e.idestudiante
+INNER JOIN Cursos c ON m.idcurso=c.idcurso
+INNER JOIN Profesores p ON c.idprofesor=p.idprofesor
+INNER JOIN NivelesIdioma n ON c.idnivel=n.idnivel
+ORDER BY m.fecha ASC;
+
+SELECT e.nombre AS Estudiante,c.nombre AS Curso,n.nombre AS Nivel
+FROM Estudiantes e
+INNER JOIN Matriculas m ON e.idestudiante=m.idestudiante
+INNER JOIN Cursos c ON m.idcurso=c.idcurso
+INNER JOIN NivelesIdioma n ON c.idnivel=n.idnivel
+WHERE n.nombre LIKE '%Intermedio%' OR n.nombre='Avanzado'
+ORDER BY e.nombre;
+
+SELECT p.nombre AS Profesor,COUNT(c.idcurso) AS TotalCursos
+FROM Profesores p
+INNER JOIN Cursos c ON p.idprofesor=c.idprofesor
+GROUP BY p.nombre
+HAVING COUNT(c.idcurso) > 1
+ORDER BY TotalCursos DESC;
+
+SELECT u.usuario,e.nombre AS Estudiante,e.correo
+FROM Usuarios u
+INNER JOIN Estudiantes e ON u.id=e.idusuario
+WHERE e.edad >=20
+ORDER BY e.edad DESC;
+
+SELECT c.nombre AS Curso,COUNT(m.idestudiante) AS TotalAlumnos
+FROM Cursos c
+INNER JOIN Matriculas m ON c.idcurso=m.idcurso
+GROUP BY c.nombre
+ORDER BY TotalAlumnos DESC;

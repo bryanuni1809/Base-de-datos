@@ -101,12 +101,28 @@ INSERT INTO Matriculas (idestudiante,idcurso,fecha) VALUES
     (4,4,'2025-01-18'),
     (5,5,'2025-01-20');	
 
+CREATE TABLE Calificaciones (
+    idnota INT PRIMARY KEY IDENTITY(1,1),
+    idmatricula INT NOT NULL,
+    nota DECIMAL(5,2) NOT NULL CHECK (nota >= 0 AND nota <= 20),
+    observacion NVARCHAR(200),
+    FOREIGN KEY (idmatricula) REFERENCES Matriculas(idmatricula)
+);
+INSERT INTO Calificaciones (idmatricula, nota, observacion) VALUES
+    (1, 18.5, 'Buen desempeño, participativo.'),
+    (2, 15.0, 'Cumple, pero debe reforzar listening.'),
+    (3, 12.0, 'Le cuesta la gramática.'),
+    (4, 19.0, 'Excelente dominio oral.'),
+    (5, 14.5, 'Regular, pero mejorando.');
+
 SELECT * FROM Usuarios;
 SELECT * FROM Profesores;
 SELECT * FROM Cursos;
 SELECT * FROM NivelesIdioma;
 SELECT * FROM Estudiantes;
 SELECT * FROM Matriculas;
+SELECT * FROM Calificaciones;
+
 
 SELECT e.nombre AS Estudiante, 
        c.nombre AS Curso, 

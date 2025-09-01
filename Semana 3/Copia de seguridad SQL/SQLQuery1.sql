@@ -2,8 +2,9 @@ USE Proyecto;
 GO
 DROP TABLE IF EXISTS Calificaciones;
 DROP TABLE IF EXISTS Matriculas;
-DROP TABLE IF EXISTS Estudiantes;
+DROP TABLE IF EXISTS Contactos;
 DROP TABLE IF EXISTS Cursos;
+DROP TABLE IF EXISTS Estudiantes;
 DROP TABLE IF EXISTS Profesores;
 DROP TABLE IF EXISTS NivelesIdioma;
 DROP TABLE IF EXISTS Usuarios;
@@ -130,7 +131,14 @@ INSERT INTO Contactos (tipo,valor,idprofesor) VALUES
     ('telefono','977555666',3), ('correo','carlos.fernandez@multilingua.com',3),
     ('telefono','966777888',4), ('correo','lucia.ramirez@multilingua.com',4),
     ('telefono','955999000',5), ('correo','pedro.sanchez@multilingua.com',5);
-
+INSERT INTO Contactos (tipo,valor,idestudiante) VALUES
+    ('correo','luis.santos@email.com',1),
+    ('correo','ana.torres@email.com',2),
+    ('correo','jorge.ramirez@email.com',3),
+    ('correo','valeria.gomez@email.com',4),
+    ('correo','carlos.silva@email.com',5),
+    ('correo','lucia.torres@email.com',6),
+    ('correo','martin.flores@email.com',7);
 
 SELECT * FROM Usuarios;
 SELECT * FROM Profesores;
@@ -139,6 +147,7 @@ SELECT * FROM NivelesIdioma;
 SELECT * FROM Estudiantes;
 SELECT * FROM Matriculas;
 SELECT * FROM Calificaciones;
+SELECT * FROM Contactos;
 
 
 SELECT e.nombre AS Estudiante, 

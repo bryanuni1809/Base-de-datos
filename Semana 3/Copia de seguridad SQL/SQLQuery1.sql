@@ -104,16 +104,16 @@ INSERT INTO Matriculas (idestudiante,idcurso,fecha) VALUES
 CREATE TABLE Calificaciones (
     idnota INT PRIMARY KEY IDENTITY(1,1),
     idmatricula INT NOT NULL,
-    nota DECIMAL(5,2) NOT NULL CHECK (nota >= 0 AND nota <= 20),
+    nota DECIMAL(5,2) NOT NULL CHECK (nota >=0 AND nota <=20),
     observacion NVARCHAR(200),
     FOREIGN KEY (idmatricula) REFERENCES Matriculas(idmatricula)
 );
 INSERT INTO Calificaciones (idmatricula, nota, observacion) VALUES
-    (1, 18.5, 'Buen desempeño, participativo.'),
-    (2, 15.0, 'Cumple, pero debe reforzar listening.'),
-    (3, 12.0, 'Le cuesta la gramática.'),
-    (4, 19.0, 'Excelente dominio oral.'),
-    (5, 14.5, 'Regular, pero mejorando.');
+    (1,18.5,'Buen desempeño, participativo.'),
+    (2,15.0,'Cumple, pero debe reforzar el vocabulario'),
+    (3,12.0,'Le cuesta la gramatica.'),
+    (4,19.0,'Excelente dominio oral.'),
+    (5,14.5,'Regular, pero mejorando.');
 
 SELECT * FROM Usuarios;
 SELECT * FROM Profesores;

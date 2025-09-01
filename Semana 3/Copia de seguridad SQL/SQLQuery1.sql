@@ -115,6 +115,23 @@ INSERT INTO Calificaciones (idmatricula, nota, observacion) VALUES
     (4,19.0,'Excelente dominio oral.'),
     (5,14.5,'Regular, pero mejorando.');
 
+CREATE TABLE Contactos (
+    idcontacto INT PRIMARY KEY IDENTITY(1,1),
+    tipo NVARCHAR(20) NOT NULL CHECK (tipo IN ('correo','telefono')),
+    valor NVARCHAR(100) NOT NULL,
+    idprofesor INT NULL,
+    idestudiante INT NULL,
+    CONSTRAINT FK_Contacto_Profesor FOREIGN KEY (idprofesor) REFERENCES Profesores(idprofesor) ON DELETE CASCADE,
+    CONSTRAINT FK_Contacto_Estudiante FOREIGN KEY (idestudiante) REFERENCES Estudiantes(idestudiante) ON DELETE CASCADE
+);
+INSERT INTO Contactos (tipo,valor,idprofesor) VALUES
+    ('telefono','999111222',1), ('correo','juan.perez@multilingua.com',1),
+    ('telefono','988333444',2), ('correo','maria.lopez@multilingua.com',2),
+    ('telefono','977555666',3), ('correo','carlos.fernandez@multilingua.com',3),
+    ('telefono','966777888',4), ('correo','lucia.ramirez@multilingua.com',4),
+    ('telefono','955999000',5), ('correo','pedro.sanchez@multilingua.com',5);
+
+
 SELECT * FROM Usuarios;
 SELECT * FROM Profesores;
 SELECT * FROM Cursos;

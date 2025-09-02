@@ -42,3 +42,22 @@ WHERE nombre LIKE 'C%';
 SELECT nombre, edad
 FROM Estudiantes
 WHERE nombre IN ('Luis Santos', 'Ana Torres', 'Valeria Gomez');
+--IS NULL
+SELECT nombre
+FROM Estudiantes
+WHERE correo IS NULL;
+--COUNT
+SELECT c.nombre AS Curso, 
+       COUNT(m.idestudiante) AS TotalAlumnos
+FROM Cursos c
+INNER JOIN Matriculas m ON c.idcurso =m.idcurso
+GROUP BY c.nombre
+ORDER BY TotalAlumnos DESC;
+--AVG
+SELECT c.nombre AS Curso, 
+       AVG(cal.nota) AS PromedioNotas
+FROM Cursos c
+INNER JOIN Matriculas m ON c.idcurso =m.idcurso
+INNER JOIN Calificaciones cal ON m.idmatricula =cal.idmatricula
+GROUP BY c.nombre
+ORDER BY PromedioNotas DESC;

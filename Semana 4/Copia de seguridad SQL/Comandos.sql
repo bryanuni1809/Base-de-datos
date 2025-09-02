@@ -50,14 +50,22 @@ WHERE correo IS NULL;
 SELECT c.nombre AS Curso, 
        COUNT(m.idestudiante) AS TotalAlumnos
 FROM Cursos c
-INNER JOIN Matriculas m ON c.idcurso =m.idcurso
+INNER JOIN Matriculas m ON c.idcurso=m.idcurso
 GROUP BY c.nombre
 ORDER BY TotalAlumnos DESC;
 --AVG
 SELECT c.nombre AS Curso, 
-       AVG(cal.nota) AS PromedioNotas
+       AVG(cal.nota)AS PromedioNotas
 FROM Cursos c
-INNER JOIN Matriculas m ON c.idcurso =m.idcurso
-INNER JOIN Calificaciones cal ON m.idmatricula =cal.idmatricula
+INNER JOIN Matriculas m ON c.idcurso=m.idcurso
+INNER JOIN Calificaciones cal ON m.idmatricula=cal.idmatricula
 GROUP BY c.nombre
 ORDER BY PromedioNotas DESC;
+--MIN y MAX
+SELECT c.nombre AS Curso,
+       MAX(cal.nota)AS NotaMaxima,
+       MIN(cal.nota) AS NotaMinima
+FROM Cursos c
+INNER JOIN Matriculas m ON c.idcurso=m.idcurso
+INNER JOIN Calificaciones cal ON m.idmatricula=cal.idmatricula
+GROUP BY c.nombre;

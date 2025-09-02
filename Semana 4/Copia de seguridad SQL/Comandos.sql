@@ -29,12 +29,16 @@ BEGIN
     ORDER BY PromedioNotas DESC;
 END;
 GO
-
 EXEC PromedioPorCurso;
+--AND
 SELECT nombre,edad,correo
 FROM Estudiantes
 WHERE edad>20 AND correo IS NOT NULL;
-
+--LIKE
 SELECT nombre
 FROM Estudiantes
 WHERE nombre LIKE 'C%';
+--IN
+SELECT nombre, edad
+FROM Estudiantes
+WHERE nombre IN ('Luis Santos', 'Ana Torres', 'Valeria Gomez');

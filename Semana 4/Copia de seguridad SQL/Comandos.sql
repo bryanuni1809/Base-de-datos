@@ -41,7 +41,7 @@ WHERE nombre LIKE 'C%';
 --IN
 SELECT nombre, edad
 FROM Estudiantes
-WHERE nombre IN ('Luis Santos', 'Ana Torres', 'Valeria Gomez');
+WHERE nombre IN ('Luis Santos','Ana Torres','Valeria Gomez');
 --IS NULL
 SELECT nombre
 FROM Estudiantes

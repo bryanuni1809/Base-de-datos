@@ -1,0 +1,1 @@
+EXEC Eliminar @CustomerID = 10000;

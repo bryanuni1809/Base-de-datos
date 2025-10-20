@@ -1,0 +1,17 @@
+Funciones Agregadas
+
+La clase de hoy sobre Funciones Agregadas nos explica cómo resumir y analizar grandes conjuntos de datos mediante funciones como sum y count.  Estas nos permiten calcular totales o promedios de columnas numéricas. En conjunto con la cláusula group by , dónde se agrupan filas con valores comunes para obtener resultados por categoría por ejemplo, ventas por cliente o año. La cláusula having se usa para filtrar los grupos resultantes, a diferencia de where, que filtra antes del agrupamiento. Además having a diferencia de where, es que puede usar las funciones Agregadas. En resumen, estas herramientas permiten obtener información condensada y útil para el análisis de datos en cualquier base de datos.
+
+Ejemplo 
+SELECT vendedor,
+    COUNT(idventa) AS totalventas,
+    SUM(Monto) AS montototal,
+    AVG(Monto) AS promedioventa,
+    MAX(Monto) AS ventamaxima,
+    MIN(Monto) AS ventaminima
+FROM ventas GROUP BY vendedor
+HAVING SUM(monto) > 2000
+ORDER BY montototal DESC;
+
+Este código agrupa las ventas por vendedor y calcula el total, promedio, cantidad y los valores máximo y mínimo de sus ventas. Luego solo muestra a los vendedores que superan 2000 en ventas totales, ordenándolos de mayor a menor.
+

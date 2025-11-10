@@ -1,0 +1,1 @@
+SELECT TOP 5 dbo.ObtenerNombreCompleto(BusinessEntityID)FROM HumanResources.Employee;

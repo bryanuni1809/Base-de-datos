@@ -1,0 +1,1 @@
+EXEC dbo.ActualizarSalarioEmpleado 1, 40.00;
